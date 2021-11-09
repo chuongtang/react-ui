@@ -1,11 +1,13 @@
 .App {
   text-align: center;
+
 }
 .mainContainer {
   display: flex;
   justify-content: center;
   width: 100%;
   margin-top: 64px;
+    
 }
 
 .dataContainer {
@@ -27,7 +29,7 @@
 
 .bio {
   text-align: center;
-  color: gray;
+  color: whitesmoke;
   margin-top: 16px;
   padding: 1rem
   

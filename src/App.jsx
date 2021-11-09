@@ -17,7 +17,8 @@ export default function App() {
         </div>
 
         <div className="bio">
-          I'm Chuong, a web3.0 explorer. Thanks for visit. Please send me a wave 👋
+          <h3>I'm Chuong, <a href="https://chuongtang.pages.dev" target="_blank" rel="noopener noreferrer">a web3.0 explorer.</a></h3> 
+          <h4>Thanks for visit. Please send me a wave 👋</h4>
         </div>
 
         <button className="waveButton" onClick={wave}>
