@@ -4,9 +4,11 @@
 }
 .mainContainer {
   display: flex;
+  flex-direction: column;
   justify-content: center;
+  align-items: center;
   width: 100%;
-  margin-top: 64px;
+  margin-top: 3rem;
     
 }
 
@@ -16,6 +18,7 @@
   justify-content: center;
   max-width: 70vw;
   border-radius: 1rem;
+  margin-bottom: 50vh;
   background: #b4c6cf;
   box-shadow:  20px 20px 60px #99a8b0,
               -20px -20px 60px #cfe4ee;
@@ -58,4 +61,14 @@
   }
   .waveButton:active {
     top: 2px;
+  }
+  footer{
+    color: #140202;
+    display: flex;
+    padding: 0.1rem;
+    flex-direction: row;
+    border-radius: 1rem;
+    background: #f5f0f0;
+    box-shadow:  20px 20px 60px #d0cccc,
+              -20px -20px 60px #ffffff;
   }

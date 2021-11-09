@@ -17,7 +17,7 @@ export default function App() {
         </div>
 
         <div className="bio">
-          <h3>I'm Chuong, <a href="https://chuongtang.pages.dev" target="_blank" rel="noopener noreferrer">a web3.0 explorer.</a></h3> 
+          <h3>I'm Chuong, <a href="https://chuongtang.pages.dev" target="_blank" rel="noopener noreferrer">a web3.0 explorer.</a></h3>
           <h4>Thanks for visit. Please send me a wave 👋</h4>
         </div>
 
@@ -25,6 +25,7 @@ export default function App() {
           Wave at Me
         </button>
       </div>
+      <footer><p>Happily built with</p> <a href="https://buildspace.so/"> <img src="https://crypto-analysis.pages.dev/logos/buildspace.png" alt="buildspace logo" /></a></footer>
     </div>
   );
 }
