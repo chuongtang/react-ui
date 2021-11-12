@@ -1,8 +1,44 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { ethers } from "ethers";
 import './App.css';
 
-export default function App() {
+
+const App = () => {
+
+  const [currentAccount, setCurrentAccount] = useState("");
+  const checkIfWalletIsConnected = async () => {
+    /*
+    * If we're logged in to Metamask, it will automatically inject a special object named ethereum into our window. 
+    Let's check if we have that first.
+    First make sure we have access to window.ethereum
+    */
+    const { ethereum } = window;
+    if (!ethereum) {
+      console.log("Make sure you have metamask!");
+      return;
+    } else {
+      console.log("We have the ethereum object", ethereum);
+    }
+    /*Check if we're authorized to access the user's wallet.
+    Once we have access to this, we can call our smart contract*/
+    
+    const accounts = await ethereum.request({ method: 'eth_accounts' });
+    try {
+      if (accounts.length !== 0) {
+        const account = accounts[0];
+        console.log("Found an authorized account:", account);
+        setCurrentAccount(account)
+      } else {
+        console.log("No authorized account found")
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  useEffect(() => {
+    checkIfWalletIsConnected();
+  }, [])
 
   const wave = () => {
 
@@ -29,3 +65,5 @@ export default function App() {
     </div>
   );
 }
+
+export default App;

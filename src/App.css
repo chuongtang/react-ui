@@ -18,7 +18,7 @@
   justify-content: center;
   max-width: 70vw;
   border-radius: 1rem;
-  margin-bottom: 50vh;
+  margin-bottom: 35vh;
   background: #b4c6cf;
   box-shadow:  20px 20px 60px #99a8b0,
               -20px -20px 60px #cfe4ee;
@@ -33,7 +33,7 @@
 .bio {
   text-align: center;
   color: whitesmoke;
-  margin-top: 16px;
+  margin-top: 1.5rem;
   padding: 1rem
   
 }
@@ -66,6 +66,7 @@
     color: #140202;
     display: flex;
     padding: 0.1rem;
+    margin: 2rem;
     flex-direction: row;
     border-radius: 1rem;
     background: #f5f0f0;
