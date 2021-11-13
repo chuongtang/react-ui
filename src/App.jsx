@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { ethers } from "ethers";
 import './App.css';
 import abiFile from './utils/WavePortal.json';
+import Loading from './Loading'
 
 
 const App = () => {
@@ -9,6 +10,7 @@ const App = () => {
   const [currentAccount, setCurrentAccount] = useState("");
   const [mined, setMined] = useState(false);
   const [count, setCount] = useState("0");
+  const [loading, setLoading] = useState(false);
 
   // This is where Waveportal smart contract deployed 🢛
   const contractAddress = '0xB4d437c69a0A8b7Dd72063Ff3021E428E56726DD';
@@ -68,6 +70,7 @@ const App = () => {
   /* Calling smart contract from frontend */
   const wave = async () => {
     try {
+      setLoading(true);
       const { ethereum } = window;
 
       if (ethereum) {
@@ -96,6 +99,7 @@ const App = () => {
         console.log("Retrieved total wave count...", count.toNumber());
         setMined(true);
         setCount(count.toNumber());
+        setLoading(false);
       } else {
         console.log("Ethereum object doesn't exist!");
       }
@@ -133,7 +137,9 @@ const App = () => {
           </button>
         )}
 
-      {mined&&<div>Total Wave I have so far: {count}</div>}
+      {mined && <div className="bio">Thank-you 🎉! Total Waves I have so far: {count}</div>}
+      {loading && <Loading/>}
+   
       </div>
       <footer><p>Happily built with</p> <a href="https://buildspace.so/"> <img src="https://crypto-analysis.pages.dev/logos/buildspace.png" alt="buildspace logo" /></a></footer>
     </div>
