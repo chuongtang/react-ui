@@ -7,14 +7,17 @@ import abiFile from './utils/WavePortal.json';
 const App = () => {
 
   const [currentAccount, setCurrentAccount] = useState("");
+  const [mined, setMined] = useState(false);
+  const [count, setCount] = useState("0");
+
   // This is where Waveportal smart contract deployed 🢛
   const contractAddress = '0xB4d437c69a0A8b7Dd72063Ff3021E428E56726DD';
   const contractABI=abiFile.abi;
 
 
   const checkIfWalletIsConnected = async () => {
-    /*
-    * If we're logged in to Metamask, it will automatically inject a special object named ethereum into our window. 
+    /* 
+    If we're logged in to Metamask, it will automatically inject a special object named ethereum into our window. 
     Let's check if we have that first.
     First make sure we have access to window.ethereum
     */
@@ -83,12 +86,16 @@ const App = () => {
         /* Execute the actual wave from your smart contract */
         const waveTxn = await wavePortalContract.wave();
         console.log("Mining...", waveTxn.hash);
+        console.log("HereIsWaveTxn BEFORE.", waveTxn);
 
         await waveTxn.wait();
         console.log("Mined -- ", waveTxn.hash);
+        console.log("waveTxn AFTER confirmed", waveTxn);
 
         count = await wavePortalContract.getTotalWaves();
         console.log("Retrieved total wave count...", count.toNumber());
+        setMined(true);
+        setCount(count.toNumber());
       } else {
         console.log("Ethereum object doesn't exist!");
       }
@@ -99,6 +106,7 @@ const App = () => {
 
   useEffect(() => {
     checkIfWalletIsConnected();
+ 
   }, [])
 
 
@@ -124,6 +132,8 @@ const App = () => {
             Connect Wallet
           </button>
         )}
+
+      {mined&&<div>Total Wave I have so far: {count}</div>}
       </div>
       <footer><p>Happily built with</p> <a href="https://buildspace.so/"> <img src="https://crypto-analysis.pages.dev/logos/buildspace.png" alt="buildspace logo" /></a></footer>
     </div>
