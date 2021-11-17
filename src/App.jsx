@@ -2,7 +2,8 @@ import React, { useState, useEffect } from "react";
 import { ethers } from "ethers";
 import './App.css';
 import abiFile from './utils/WavePortal.json';
-import Loading from './Loading'
+import Loading from './Loading';
+import Alert from "./components/Alert/Alert.jsx"
 
 
 const App = () => {
@@ -106,7 +107,7 @@ const App = () => {
         console.log("Ethereum object doesn't exist!");
       }
     } catch (error) {
-      error.code == 4001 ? setLoading(false) :alert("Transaction was rejected");
+      error.code == 4001 ? setLoading(false) : alert("Transaction was rejected");
       console.log(error)
     }
   }
@@ -151,7 +152,9 @@ const App = () => {
 
   return (
     <div className="mainContainer">
-
+      <Alert title="Items Not Added" type="error">
+        <div>Your items are out of stock.</div>
+      </Alert>
       <div className="dataContainer">
         <div className="header">
           👋 Hey there!
