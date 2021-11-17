@@ -106,6 +106,7 @@ const App = () => {
         console.log("Ethereum object doesn't exist!");
       }
     } catch (error) {
+      error.code == 4001 ? setLoading(false) :alert("Transaction was rejected");
       console.log(error)
     }
   }
