@@ -5,7 +5,7 @@ import './Alert.css';
 const Alert = ({ title, type }) => {
   return (
     <div className={`alert-wrapper ${type}`}>
-    <h2>{title}</h2>
+    <h4>{title}</h4>
 
   </div>
   )

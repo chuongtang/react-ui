@@ -1,24 +1,34 @@
 .alert-wrapper {
-  padding: 15px;
-  margin-bottom: 15px;
+  padding: 0.5rem;
+  margin-bottom: 1rem;
+  border-radius: 0.5rem;
 }
 
-.alert-wrapper h2 {
+.alert-wrapper h4 {
   margin: 0 0 10px 0;
+  
 }
 
 .alert-wrapper.success {
-  border: #6DA06F solid 1px;
+  background-color: #439C88;
 }
 
-.success h2 {
-  color: #6DA06F;
+.success h4 {
+  color: white;
 }
 
 .alert-wrapper.error {
   border: #F56260 solid 1px;
 }
 
-.error h2 {
+.error h4 {
   color: #F56260;
+}
+
+.alert-wrapper.info {
+  border: #455469 solid 1px;
+}
+
+.info h4 {
+  color: #455469;
 }

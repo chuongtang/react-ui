@@ -5,7 +5,8 @@ import abiFile from './utils/WavePortal.json';
 import Loading from './Loading';
 import Alert from "./components/Alert/Alert.jsx";
 import ScrollTable from "./components/ScrollTable";
-import WaveList from "./components/WaveList"
+import WaveList from "./components/WaveList";
+import Bino from "./components/bino.svg"
 
 
 const App = () => {
@@ -15,9 +16,11 @@ const App = () => {
   const [count, setCount] = useState("0");
   const [loading, setLoading] = useState(false);
   const [allWaves, setAllWaves] = useState([]);
-  const [alert, setAlert] = useState('');
+  const [alertTitle, setAlertTitle] = useState('');
+  const [alertType, setAlertType] = useState('sucess');
   const [waveMessage, setWaveMessage] = useState('');
   const [showMsgBox, setShowMsgBox] = useState(false);
+  const [waveTxn, setWaveTxn] = useState('');
 
   // This is where Waveportal smart contract deployed 🢛
   const contractAddress = '0x232671ffc45d156D7deEC631fc5c43d08a8e2596';
@@ -61,7 +64,7 @@ const App = () => {
       const { ethereum } = window;
 
       if (!ethereum) {
-        alert("Get MetaMask!");
+        alert("Pease install Metamask");
         return;
       }
 
@@ -99,10 +102,16 @@ const App = () => {
         console.log("Mining...", waveTxn.hash);
         console.log("HereIsWaveTxn BEFORE.", waveTxn);
 
+        
         await waveTxn.wait();
         console.log("Mined -- ", waveTxn.hash);
         console.log("waveTxn AFTER confirmed", waveTxn);
-
+        setWaveTxn(waveTxn.hash);
+        setAlertTitle(`Successfully mined:  ${waveTxn.hash}`);
+        setAlertType("success");
+        setTimeout(() => {
+          setAlertTitle('');
+        }, 5000);
         count = await wavePortalContract.getTotalWaves();
         console.log("Retrieved total wave count...", count.toNumber());
         setMined(true);
@@ -112,8 +121,16 @@ const App = () => {
         console.log("Ethereum object doesn't exist!");
       }
     } catch (error) {
-      error.code == 4001 ? setLoading(false) : alert("Transaction was rejected");
+      if(error.code == '4001'){
+        setLoading(false)
+        setAlertTitle("Transaction was rejected !!");
+        setAlertType("error");
+        setTimeout(() => {
+          setAlertTitle('');
+        }, 3000);
+      } 
       console.log(error)
+      return;
     }
   }
 
@@ -150,41 +167,41 @@ const App = () => {
 
   const sendWaveMessage = async (e) => {
     e.preventDefault();
+    setAlertTitle("Accessing smart contract...");
+    setAlertType("info");
     console.log("wave message", waveMessage);
+
     await wave(waveMessage);
+
     setShowMsgBox(false);
   }
 
-
   useEffect(() => {
     checkIfWalletIsConnected();
-
   }, [])
 
 
   useEffect(() => {
     getAllWaves();
-
   }, [showMsgBox, currentAccount])
 
 
   return (
     <div className="App">
       <div className="mainContainer">
-        {alert ? <Alert title="Alert titile" type="error">
-        </Alert> : <h1>👋</h1>}
+        {alertTitle ? <Alert title={alertTitle} type={alertType}>
+        </Alert> : <object type="image/svg+xml" data={Bino}></object>}
         <div className="dataContainer">
           <div className="header">
-            Hey there!
+            Hey there! I'm Chuong, <a href="https://chuongtang.pages.dev" target="_blank" rel="noopener noreferrer">a web3.0 explorer.</a>
           </div>
           <div className="bio">
-            <h3>I'm Chuong, <a href="https://chuongtang.pages.dev" target="_blank" rel="noopener noreferrer">a web3.0 explorer.</a></h3>
-            <h4>Thanks for your visit. </h4>
+            <h3>Thanks for stopping by.</h3>
+            <h4> This site is connected to my smart contract on Rinkeby blockchain </h4>
           </div>
-          {currentAccount ? <button className="waveButton" onClick={() => { setShowMsgBox(true) }}>
-          Please send me a wave 👋
+          {currentAccount ? <button className="waveButton" onClick={() => { setShowMsgBox(true) }}>Please send me a wave 👋
           </button> : <button className="waveButton" onClick={connectWallet}>
-            Connect Metamask
+            Connect your Metamask to say hi 👋
           </button>}
           {showMsgBox && !loading &&
             <form onSubmit={sendWaveMessage} style={{ "display": "flex" }} >
@@ -197,13 +214,6 @@ const App = () => {
               />
               <input type="submit" className="waveButton" />
             </form>}
-          {/* 
-          {!currentAccount && (
-            <button className="waveButton" onClick={connectWallet}>
-              Connect Metamask
-            </button>
-          )} */}
-
           {mined && <div className="bio">Thank-you 🎉! Total Waves I have so far: {count}</div>}
           {loading && <Loading />}
         </div>
