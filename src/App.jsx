@@ -152,8 +152,8 @@ const App = () => {
 
   return (
     <div className="mainContainer">
-      <Alert title="Items Not Added" type="error">
-        <div>Your items are out of stock.</div>
+      <Alert title="Alert titile" type="error">
+        <div>.</div>
       </Alert>
       <div className="dataContainer">
         <div className="header">
