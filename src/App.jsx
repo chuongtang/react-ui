@@ -15,6 +15,9 @@ const App = () => {
   const [count, setCount] = useState("0");
   const [loading, setLoading] = useState(false);
   const [allWaves, setAllWaves] = useState([]);
+  const [alert, setAlert] = useState('');
+  const [waveMessage, setWaveMessage] = useState('');
+  const [showMsgBox, setShowMsgBox] = useState(false);
 
   // This is where Waveportal smart contract deployed 🢛
   const contractAddress = '0x232671ffc45d156D7deEC631fc5c43d08a8e2596';
@@ -73,7 +76,7 @@ const App = () => {
 
 
   /* Calling smart contract from frontend */
-  const wave = async () => {
+  const wave = async (waveMessage) => {
     try {
       setLoading(true);
       const { ethereum } = window;
@@ -92,7 +95,7 @@ const App = () => {
         console.log("Retrieved total wave count...", count.toNumber());
 
         /* Execute the actual wave from your smart contract */
-        const waveTxn = await wavePortalContract.wave("Message from wave");
+        const waveTxn = await wavePortalContract.wave(waveMessage);
         console.log("Mining...", waveTxn.hash);
         console.log("HereIsWaveTxn BEFORE.", waveTxn);
 
@@ -129,7 +132,7 @@ const App = () => {
 
         let wavesCleaned = [];
         waves.forEach(wave => {
-          wavesCleaned.push({
+          wavesCleaned.unshift({
             address: wave.waver,
             timestamp: new Date(wave.timestamp * 1000),
             message: wave.message
@@ -145,36 +148,57 @@ const App = () => {
     }
   }
 
+  const sendWaveMessage = async (e) => {
+    e.preventDefault();
+    console.log("wave message", waveMessage);
+    await wave(waveMessage);
+    setShowMsgBox(false);
+  }
+
 
   useEffect(() => {
     checkIfWalletIsConnected();
 
   }, [])
 
+  
+  useEffect(() => {
+    getAllWaves();
+
+  }, [showMsgBox])
+
 
   return (
-    <>
+    <div className="App">
       <div className="mainContainer">
-        <Alert title="Alert titile" type="error">
-          <div>.</div>
-        </Alert>
+        {alert ? <Alert title="Alert titile" type="error">
+        </Alert> : <h1>👋</h1>}
         <div className="dataContainer">
           <div className="header">
-            👋 Hey there!
+            Hey there!
           </div>
-
           <div className="bio">
             <h3>I'm Chuong, <a href="https://chuongtang.pages.dev" target="_blank" rel="noopener noreferrer">a web3.0 explorer.</a></h3>
             <h4>Thanks for your visit. Please send me a wave 👋</h4>
           </div>
-
-          <button className="waveButton" onClick={wave}>
+          <button className="waveButton" onClick={()=>{setShowMsgBox(true)}}>
             Wave at Me
           </button>
+          {showMsgBox && !loading &&
+            <form onSubmit={sendWaveMessage} style={{ "display": "flex" }} >
+              <textarea
+                value={waveMessage}
+                placeholder="Type your message here"
+                onChange={(e) => setWaveMessage(e.target.value)}
+                className="msgBox"
+                id="styled"
+              />
+              <input type="submit" className="waveButton" />
+            </form>}
 
           {!currentAccount && (
             <button className="waveButton" onClick={connectWallet}>
-              Connect Wallet
+              Connect Metamask
             </button>
           )}
 
@@ -182,12 +206,13 @@ const App = () => {
           {loading && <Loading />}
         </div>
       </div>
+      <h3>My wave list</h3>
+      {!loading &&
       <ScrollTable>
         <WaveList waves={allWaves} />
-      </ScrollTable>
-        <footer><p>Happily built with</p> <a href="https://buildspace.so/"> <img src="https://crypto-analysis.pages.dev/logos/buildspace.png" alt="buildspace logo" /></a></footer>
-
-    </>
+      </ScrollTable>}
+      <footer><p>Happily built with</p> <a href="https://buildspace.so/"> <img src="https://crypto-analysis.pages.dev/logos/buildspace.png" alt="buildspace logo" /></a></footer>
+    </div>
   );
 }
 

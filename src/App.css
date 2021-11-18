@@ -1,6 +1,9 @@
 .App {
   text-align: center;
-
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 .mainContainer {
   display: flex;
@@ -9,6 +12,7 @@
   align-items: center;
   width: 100%;
   margin-top: 3rem;
+  margin-bottom: 1.5rem;
     
 }
 
@@ -26,14 +30,14 @@
 
 .header {
   text-align: center;
-  font-size: 32px;
+  font-size: 1.5rem;
   font-weight: 600;
 }
 
 .bio {
   text-align: center;
   color: whitesmoke;
-  margin-top: 1.5rem;
+  margin-top: 0.5rem;
   padding: 1rem
   
 }
@@ -49,12 +53,12 @@
   cursor: pointer;
   transition: all 0.3s ease;
   position: relative;
-  display: inline-block;
+
   outline: none;
   border-radius: 5px;
   border: none;
   background-size: 120% auto;
-  background-image: linear-gradient(315deg, #f0ecfc 0%, #c797eb 75%);
+  background-image: linear-gradient(315deg, #f0ecfc 0%, #455469 75%);
   }
   .waveButton:hover {
     background-position: right center;
@@ -108,7 +112,32 @@
 /* Spinner ends here */
 
 .wavecard{
-  padding: 0.5rem;
+  margin: 0.5rem;
+  padding: 0.2rem 0.5rem;
   display: flex;
+  line-height: 0.7ch;
+  font-size: 0.75rem;
   flex-direction: row;
+  border-radius: 16px;
+  color: #fff;
+  background: #8AAFA5;
+  justify-content: center;
+}
+.scrollTable{
+  overflow-y: scroll;
+  height: 30vh;
+  width: 30vw;
+  align-items: center;
+  border-radius:0.5rem;
+
+}
+textarea#styled {
+	width: 20vw;
+	height: 10vh;
+	border: 3px solid #cccccc;
+  border-radius: 0.5rem;
+	padding: 5px;
+  margin-left: 1rem;
+  margin-bottom: 1rem;
+
 }
