@@ -161,11 +161,11 @@ const App = () => {
 
   }, [])
 
-  
+
   useEffect(() => {
     getAllWaves();
 
-  }, [showMsgBox])
+  }, [showMsgBox, currentAccount])
 
 
   return (
@@ -179,11 +179,13 @@ const App = () => {
           </div>
           <div className="bio">
             <h3>I'm Chuong, <a href="https://chuongtang.pages.dev" target="_blank" rel="noopener noreferrer">a web3.0 explorer.</a></h3>
-            <h4>Thanks for your visit. Please send me a wave 👋</h4>
+            <h4>Thanks for your visit. </h4>
           </div>
-          <button className="waveButton" onClick={()=>{setShowMsgBox(true)}}>
-            Wave at Me
-          </button>
+          {currentAccount ? <button className="waveButton" onClick={() => { setShowMsgBox(true) }}>
+          Please send me a wave 👋
+          </button> : <button className="waveButton" onClick={connectWallet}>
+            Connect Metamask
+          </button>}
           {showMsgBox && !loading &&
             <form onSubmit={sendWaveMessage} style={{ "display": "flex" }} >
               <textarea
@@ -195,22 +197,22 @@ const App = () => {
               />
               <input type="submit" className="waveButton" />
             </form>}
-
+          {/* 
           {!currentAccount && (
             <button className="waveButton" onClick={connectWallet}>
               Connect Metamask
             </button>
-          )}
+          )} */}
 
           {mined && <div className="bio">Thank-you 🎉! Total Waves I have so far: {count}</div>}
           {loading && <Loading />}
         </div>
       </div>
-      <h3>My wave list</h3>
-      {!loading &&
-      <ScrollTable>
-        <WaveList waves={allWaves} />
-      </ScrollTable>}
+      {currentAccount && <h3>My wave list</h3>}
+      {!loading && currentAccount &&
+        <ScrollTable>
+          <WaveList waves={allWaves} />
+        </ScrollTable>}
       <footer><p>Happily built with</p> <a href="https://buildspace.so/"> <img src="https://crypto-analysis.pages.dev/logos/buildspace.png" alt="buildspace logo" /></a></footer>
     </div>
   );
