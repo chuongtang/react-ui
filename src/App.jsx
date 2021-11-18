@@ -3,7 +3,9 @@ import { ethers } from "ethers";
 import './App.css';
 import abiFile from './utils/WavePortal.json';
 import Loading from './Loading';
-import Alert from "./components/Alert/Alert.jsx"
+import Alert from "./components/Alert/Alert.jsx";
+import ScrollTable from "./components/ScrollTable";
+import WaveList from "./components/WaveList"
 
 
 const App = () => {
@@ -151,45 +153,41 @@ const App = () => {
 
 
   return (
-    <div className="mainContainer">
-      <Alert title="Alert titile" type="error">
-        <div>.</div>
-      </Alert>
-      <div className="dataContainer">
-        <div className="header">
-          👋 Hey there!
-        </div>
+    <>
+      <div className="mainContainer">
+        <Alert title="Alert titile" type="error">
+          <div>.</div>
+        </Alert>
+        <div className="dataContainer">
+          <div className="header">
+            👋 Hey there!
+          </div>
 
-        <div className="bio">
-          <h3>I'm Chuong, <a href="https://chuongtang.pages.dev" target="_blank" rel="noopener noreferrer">a web3.0 explorer.</a></h3>
-          <h4>Thanks for your visit. Please send me a wave 👋</h4>
-        </div>
+          <div className="bio">
+            <h3>I'm Chuong, <a href="https://chuongtang.pages.dev" target="_blank" rel="noopener noreferrer">a web3.0 explorer.</a></h3>
+            <h4>Thanks for your visit. Please send me a wave 👋</h4>
+          </div>
 
-        <button className="waveButton" onClick={wave}>
-          Wave at Me
-        </button>
-
-        {!currentAccount && (
-          <button className="waveButton" onClick={connectWallet}>
-            Connect Wallet
+          <button className="waveButton" onClick={wave}>
+            Wave at Me
           </button>
-        )}
 
-        {mined && <div className="bio">Thank-you 🎉! Total Waves I have so far: {count}</div>}
-        {loading && <Loading />}
+          {!currentAccount && (
+            <button className="waveButton" onClick={connectWallet}>
+              Connect Wallet
+            </button>
+          )}
 
-        {allWaves.map((wave, index) => {
-          return (
-            <div key={index} style={{ backgroundColor: "OldLace", marginTop: "16px", padding: "8px" }}>
-              <div>Address: {wave.address}</div>
-              <div>Time: {wave.timestamp.toString()}</div>
-              <div>Message: {wave.message}</div>
-            </div>)
-        })}
-
+          {mined && <div className="bio">Thank-you 🎉! Total Waves I have so far: {count}</div>}
+          {loading && <Loading />}
+        </div>
       </div>
-      <footer><p>Happily built with</p> <a href="https://buildspace.so/"> <img src="https://crypto-analysis.pages.dev/logos/buildspace.png" alt="buildspace logo" /></a></footer>
-    </div>
+      <ScrollTable>
+        <WaveList waves={allWaves} />
+      </ScrollTable>
+        <footer><p>Happily built with</p> <a href="https://buildspace.so/"> <img src="https://crypto-analysis.pages.dev/logos/buildspace.png" alt="buildspace logo" /></a></footer>
+
+    </>
   );
 }
 
