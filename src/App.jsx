@@ -23,7 +23,7 @@ const App = () => {
   const [waveTxn, setWaveTxn] = useState('');
 
   // This is where Waveportal smart contract deployed 🢛
-  const contractAddress = '0xe687Efc8A8E8116F4f35A30272c4f741Cc80B123';
+  const contractAddress = '0x5D9BA7B814fe06F64BC32c9245eAD54CF04237Ec';
   const contractABI = abiFile.abi;
 
 
