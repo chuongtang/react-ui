@@ -196,7 +196,7 @@ const App = () => {
     <div className="App">
       <div className="mainContainer">
         {alertTitle ? <Alert title={alertTitle} type={alertType}>
-        </Alert> : <object type="image/svg+xml" data={Bino}></object>}
+        </Alert> : <object type="image/svg+xml" data={Bino} alt="Animation Top Logo"></object>}
         <div className="dataContainer">
           <div className="header">
             Hey there! I'm Chuong, <a href="https://chuongtang.pages.dev" target="_blank" rel="noopener noreferrer">a web3.0 explorer.</a>
