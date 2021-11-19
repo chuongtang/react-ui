@@ -32,3 +32,12 @@
 .info h4 {
   color: #455469;
 }
+
+.alert-wrapper.reward {
+  border: #F56260 solid 1px;
+  background-color: #F56260;
+}
+
+.reward h4 {
+  color: #f0f3f7;
+}

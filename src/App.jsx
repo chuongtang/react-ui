@@ -102,16 +102,22 @@ const App = () => {
         console.log("Mining...", waveTxn.hash);
         console.log("HereIsWaveTxn BEFORE.", waveTxn);
 
-        
+
         await waveTxn.wait();
         console.log("Mined -- ", waveTxn.hash);
         console.log("waveTxn AFTER confirmed", waveTxn);
         setWaveTxn(waveTxn.hash);
         setAlertTitle(`Successfully mined:  ${waveTxn.hash}`);
         setAlertType("success");
+
+        setTimeout(() => {
+          setAlertTitle(`Thanks for submitting message to blockchain! I've sent you 0.001 eth`);
+          setAlertType("reward");
+        }, 5000);
+
         setTimeout(() => {
           setAlertTitle('');
-        }, 5000);
+        }, 8000);
         count = await wavePortalContract.getTotalWaves();
         console.log("Retrieved total wave count...", count.toNumber());
         setMined(true);
@@ -121,14 +127,14 @@ const App = () => {
         console.log("Ethereum object doesn't exist!");
       }
     } catch (error) {
-      if(error.code == '4001'){
+      if (error.code == '4001') {
         setLoading(false)
         setAlertTitle("Transaction was rejected !!");
         setAlertType("error");
         setTimeout(() => {
           setAlertTitle('');
         }, 3000);
-      } 
+      }
       console.log(error)
       return;
     }
