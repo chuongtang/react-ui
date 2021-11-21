@@ -137,5 +137,8 @@ textarea#styled {
 	padding: 5px;
   margin-left: 1rem;
   margin-bottom: 1rem;
-
+}
+body > footer {
+  position: sticky;
+  top: 100vh;
 }

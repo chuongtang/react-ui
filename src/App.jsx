@@ -229,6 +229,7 @@ const App = () => {
         <ScrollTable>
           <WaveList waves={allWaves} />
         </ScrollTable>}
+      
       <footer><p>Happily built with</p> <a href="https://buildspace.so/"> <img src="https://crypto-analysis.pages.dev/logos/buildspace.png" alt="buildspace logo" /></a></footer>
     </div>
   );
