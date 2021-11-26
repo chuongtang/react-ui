@@ -199,7 +199,7 @@ const App = () => {
         </Alert> : <object type="image/svg+xml" data={Bino} alt="Animation Top Logo"></object>}
         <div className="dataContainer">
           <div className="header">
-            Hey there! I'm Chuong, <a href="https://chuongtang.pages.dev" target="_blank" rel="noopener noreferrer">a web3.0 explorer.</a>
+            Hey there! I'm Chuong, <a href="https://chuongtang.pages.dev" target="_blank" rel="noopener noreferrer"  className="btn btn-lg">a web3.0 explorer.</a>
           </div>
           <div className="bio">
             <h3>Thanks for stopping by.</h3>

@@ -32,6 +32,7 @@
   text-align: center;
   font-size: 1.5rem;
   font-weight: 600;
+  margin-top: 1rem;
 }
 
 .bio {
@@ -141,4 +142,57 @@ textarea#styled {
 body > footer {
   position: sticky;
   top: 100vh;
+}
+
+.btn{
+  color: #282936;
+  font-family: 'Nova Flat', cursive;
+  font-weight: 700;
+  letter-spacing: 1px;
+  padding: 13px 25px 10px 45px;
+  border-radius: 1rem;
+  position: relative;
+  transition: all 0.2s ease 0s;
+  z-index: 1;
+}
+
+.btn:hover{
+  background-color: #EE5A24;
+  width: 100%;
+}
+.btn:before,
+.btn:after{
+  color: #fff;
+  content: "➡";
+  font-weight: 900;
+  line-height: 48px;
+  width: 40px;
+  height: 40px;
+  position: absolute;
+ 
+  top: 0;
+  left: 0;
+  z-index: 0;
+  transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+}
+.btn:after{
+  background-color: #282936;
+  content: "";
+  width: 40px;
+  height: 40px;
+  border-radius: 50px;
+  position: absolute;
+  top: 4px;
+  left: 0;
+  z-index: -1;
+  transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+}
+
+.btn.orange:hover:after{
+  background-color: #EE5A24;
+  width: 100%;
+  
+}
+@media only screen and (max-width: 767px){
+  .btn{ margin-bottom: 20px; }
 }
