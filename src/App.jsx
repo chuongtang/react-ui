@@ -196,10 +196,10 @@ const App = () => {
     <div className="App">
       <div className="mainContainer">
         {alertTitle ? <Alert title={alertTitle} type={alertType}>
-        </Alert> : <object type="image/svg+xml" data={Bino} alt="Animation Top Logo"></object>}
+        </Alert> : <h1> Hello there</h1>}
         <div className="dataContainer">
           <div className="header">
-            Hey there! I'm Chuong, <a href="https://chuongtang.pages.dev" target="_blank" rel="noopener noreferrer"  className="btn btn-lg">a web3.0 explorer.</a>
+            I'm Chuong, <a href="https://chuongtang.pages.dev" target="_blank" rel="noopener noreferrer"  className="btn btn-lg">a web3 explorer.<object type="image/svg+xml" data={Bino} className="anim" alt="Animation Top Logo"></object></a>
           </div>
           <div className="bio">
             <h3>Thanks for stopping by.</h3>
