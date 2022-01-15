@@ -6,7 +6,8 @@ import Loading from './Loading';
 import Alert from "./components/Alert/Alert.jsx";
 import ScrollTable from "./components/ScrollTable";
 import WaveList from "./components/WaveList";
-import Bino from "./components/bino.svg"
+import Bino from "./components/bino.svg";
+import './App.scss';
 
 
 const App = () => {
@@ -196,10 +197,10 @@ const App = () => {
     <div className="App">
       <div className="mainContainer">
         {alertTitle ? <Alert title={alertTitle} type={alertType}>
-        </Alert> : <h1> Hello there</h1>}
+        </Alert> : <h1> Hello there,</h1>}
         <div className="dataContainer">
           <div className="header">
-            I'm Chuong, <a href="https://chuongtang.pages.dev" target="_blank" rel="noopener noreferrer"  className="btn btn-lg">a web3 explorer.<object type="image/svg+xml" data={Bino} className="anim" alt="Animation Top Logo"></object></a>
+            I'm <a href="https://chuongtang.pages.dev" target="_blank" rel="noopener noreferrer">Chuong,</a> <a href="https://chuongtang.pages.dev" target="_blank" rel="noopener noreferrer"  className="btn btn-lg"><span class="time-of-day"></span>.<object type="image/svg+xml" data={Bino} className="anim" alt="Animation Top Logo"></object></a>
           </div>
           <div className="bio">
             <h3>Thanks for stopping by.</h3>
@@ -230,7 +231,7 @@ const App = () => {
           <WaveList waves={allWaves} />
         </ScrollTable>}
       
-      <footer><p>Happily built with</p> <a href="https://buildspace.so/"> <img src="https://crypto-analysis.pages.dev/logos/buildspace.png" alt="buildspace logo" /></a></footer>
+      {/* <footer><p>Happily built with</p> <a href="https://buildspace.so/"> <img src="https://crypto-analysis.pages.dev/logos/buildspace.png" alt="buildspace logo" /></a></footer> */}
     </div>
   );
 }

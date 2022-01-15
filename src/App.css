@@ -164,7 +164,7 @@ body > footer {
 .btn:before,
 .btn:after{
   color: #fff;
-  content: "➡";
+  content: "A";
   font-weight: 900;
   line-height: 48px;
   width: 40px;
