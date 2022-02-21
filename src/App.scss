@@ -5,7 +5,7 @@
 	background-color: lightsalmon;
 	&::before { font-weight: 600; }
 	@include typed(
-		"Blockchain explorer", "Web3 developer", "n  avid learner",
+		"Blockchain explorer", "Web3 developer", "Avid learner",
 		2,
 		(caret-width: 2px, caret-space: 2px)
 	);
