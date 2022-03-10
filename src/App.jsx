@@ -7,8 +7,18 @@ import Alert from "./components/Alert/Alert.jsx";
 import ScrollTable from "./components/ScrollTable";
 import WaveList from "./components/WaveList";
 import Bino from "./components/bino.svg";
-import './App.scss';
+import TypeTexts from "./components/TypeTexts";
 
+const CustomSimpleTypewriter = () => {
+  const text = useTypewriter({
+    words: ['i', 'use', 'hooks!'],
+    loop: true,
+    onLoop: (loopCount) => console.log(`Hook completed loop ${loopCount}`),
+    onDone: () => console.log('Done!')
+  })
+
+  return <span>{text}</span>
+}
 
 const App = () => {
 
@@ -152,7 +162,7 @@ const App = () => {
 
         // Call the getAllWaves method from the Smart Contract
         const waves = await wavePortalContract.getAllWaves();
-
+        // console.log("Waves from getAllWaves", waves)
 
         let wavesCleaned = [];
         waves.forEach(wave => {
@@ -168,7 +178,7 @@ const App = () => {
         console.log("Ethereum object doesn't exist!")
       }
     } catch (error) {
-      console.log(error);
+      console.log(error.message);
     }
   }
 
@@ -200,11 +210,13 @@ const App = () => {
         </Alert> : <h1> Hello there,</h1>}
         <div className="dataContainer">
           <div className="header">
-            I'm <a href="https://chuongtang.pages.dev" target="_blank" rel="noopener noreferrer">Chuong,</a> <a href="https://chuongtang.pages.dev" target="_blank" rel="noopener noreferrer" className="btn btn-lg"><span class="myTitles"></span>.<object type="image/svg+xml" data={Bino} className="anim" alt="Animation Top Logo"></object></a>
+          <object type="image/svg+xml" data={Bino} className="anim" alt="Animation Top Logo"></object>I'm <a href="https://chuongtang.pages.dev" target="_blank" rel="noopener noreferrer">Chuong,</a> 
+            <TypeTexts />
+            {/* <a href="https://chuongtang.pages.dev" target="_blank" rel="noopener noreferrer" className="btn btn-lg"><span class="myTitles"></span>.<object type="image/svg+xml" data={Bino} className="anim" alt="Animation Top Logo"></object></a> */}
           </div>
           <div className="bio">
             <h3>Thanks for stopping by.</h3>
-            <h4> This site is connected to my smart contract on Rinkeby blockchain </h4>
+            <h4> This site is connected to my smart contract on <span className="rinkeby">Rinkeby</span> blockchain </h4>
           </div>
           {currentAccount ? <button className="waveButton" onClick={() => { setShowMsgBox(true) }}>Please send me a wave 👋
           </button> : <button className="waveButton" onClick={connectWallet}>
@@ -231,7 +243,9 @@ const App = () => {
           <WaveList waves={allWaves} />
         </ScrollTable>}
 
-      {/* <footer><p>Happily built with</p> <a href="https://buildspace.so/"> <img src="https://crypto-analysis.pages.dev/logos/buildspace.png" alt="buildspace logo" /></a></footer> */}
+      <footer className="btn-grad animate-bounce"><span>Need a Web2 developer ?  </span> <a href="https://chuongtang.pages.dev/"> Hire me</a></footer>
+
+      
     </div>
   );
 }

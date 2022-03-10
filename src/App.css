@@ -139,10 +139,10 @@ textarea#styled {
   margin-left: 1rem;
   margin-bottom: 1rem;
 }
-body > footer {
+/* body > footer {
   position: sticky;
   top: 100vh;
-}
+} */
 
 .btn{
   color: #282936;
@@ -177,7 +177,7 @@ body > footer {
   transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
 }
 .btn:after{
-  background-color: #282936;
+  background-color: #632305;
   content: "";
   width: 40px;
   height: 40px;
@@ -199,5 +199,64 @@ body > footer {
 }
 .anim{
   max-height: 2.75rem;
+}
 
+.rinkeby{
+  color: yellow;
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+
+/* Btn for footer */
+.btn-grad {background-image: linear-gradient(to right, #556270 0%, #FF6B6B  51%, #556270  100%)}
+.btn-grad {
+    margin: 10px;
+    padding: 15px 45px;
+    text-align: center;
+    text-transform: uppercase;
+    transition: 0.5s;
+    background-size: 200% auto;
+    color: white;            
+    box-shadow: 0 0 20px #eee;
+    border-radius: 10px;
+    display: block;
+          }
+
+.btn-grad:hover {
+  background-position: right center; /* change the direction of the change here */
+  color: #fff;
+}
+
+/* Animation for footer */
+@keyframes bounce {
+  0%, 100% {
+    -webkit-transform: translateY(-25%);
+    transform: translateY(-25%);
+    -webkit-animation-timing-function: cubic-bezier(0.8,0,1,1);
+    animation-timing-function: cubic-bezier(0.8,0,1,1);
+  }
+  50% {
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+    -webkit-animation-timing-function: cubic-bezier(0,0,0.2,1);
+    animation-timing-function: cubic-bezier(0,0,0.2,1);
+  }
+}
+@-webkit-keyframes bounce {
+  0%, 100% {
+    -webkit-transform: translateY(-25%);
+    transform: translateY(-25%);
+    -webkit-animation-timing-function: cubic-bezier(0.8,0,1,1);
+    animation-timing-function: cubic-bezier(0.8,0,1,1);
+  }
+  50% {
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+    -webkit-animation-timing-function: cubic-bezier(0,0,0.2,1);
+    animation-timing-function: cubic-bezier(0,0,0.2,1);
+  }
+}
+.animate-bounce {
+  -webkit-animation: bounce 2s infinite;
+  animation: bounce 2s 3;
 }
