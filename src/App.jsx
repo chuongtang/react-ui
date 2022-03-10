@@ -243,7 +243,7 @@ const App = () => {
           <WaveList waves={allWaves} />
         </ScrollTable>}
 
-      <footer className="btn-grad animate-bounce"><span>Need a Web2 developer ?  </span> <a href="https://chuongtang.pages.dev/"> Hire me</a></footer>
+      <footer className="btn-grad animate-bounce"><span>Need a Web2 developer ?  </span> <a href="https://chuongtang.pages.dev/" target="_blank"> Hire me</a></footer>
 
       
     </div>
