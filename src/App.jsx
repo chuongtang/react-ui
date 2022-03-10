@@ -8,6 +8,7 @@ import ScrollTable from "./components/ScrollTable";
 import WaveList from "./components/WaveList";
 import Bino from "./components/bino.svg";
 import TypeTexts from "./components/TypeTexts";
+import BGsvg from "./components/BGsvg"
 
 const CustomSimpleTypewriter = () => {
   const text = useTypewriter({
@@ -75,13 +76,13 @@ const App = () => {
       const { ethereum } = window;
 
       if (!ethereum) {
-        alert("Pease install Metamask");
+        alert("Please install Metamask");
         return;
       }
-
       const accounts = await ethereum.request({ method: "eth_requestAccounts" });
-
-      console.log("Connected", accounts[0]);
+      
+      // console.log("Connected", accounts[0]);
+      alert("Please ensure the network is RINKEBY");
       setCurrentAccount(accounts[0]);
     } catch (error) {
       console.log(error)
@@ -210,9 +211,8 @@ const App = () => {
         </Alert> : <h1> Hello there,</h1>}
         <div className="dataContainer">
           <div className="header">
-          <object type="image/svg+xml" data={Bino} className="anim" alt="Animation Top Logo"></object>I'm <a href="https://chuongtang.pages.dev" target="_blank" rel="noopener noreferrer">Chuong,</a> 
+          <object type="image/svg+xml" data={Bino} className="anim" alt="Animation Top Logo"></object>I'm Chuong, 
             <TypeTexts />
-            {/* <a href="https://chuongtang.pages.dev" target="_blank" rel="noopener noreferrer" className="btn btn-lg"><span class="myTitles"></span>.<object type="image/svg+xml" data={Bino} className="anim" alt="Animation Top Logo"></object></a> */}
           </div>
           <div className="bio">
             <h3>Thanks for stopping by.</h3>
