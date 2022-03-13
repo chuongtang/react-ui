@@ -215,8 +215,8 @@ const App = () => {
             <TypeTexts />
           </div>
           <div className="bio">
-            <h3>Thanks for stopping by.</h3>
-            <h4> This site is connected to my smart contract on <span className="rinkeby">Rinkeby</span> blockchain </h4>
+            <h3 className="text-gradient">Thanks for stopping by.</h3>
+            <h4 className="text-gradient"> This site is connected to my smart contract on <span className="rinkeby">Rinkeby</span> blockchain </h4>
           </div>
           {currentAccount ? <button className="waveButton" onClick={() => { setShowMsgBox(true) }}>Please send me a wave 👋
           </button> : <button className="waveButton" onClick={connectWallet}>

@@ -25,7 +25,8 @@
   background: #b4c6cf;
   box-shadow:  20px 20px 60px #99a8b0,
               -20px -20px 60px #cfe4ee;
-  background-image: url(./components/svgBG.svg);
+  background-image: linear-gradient(to bottom, #f1efe9, black);
+  /* background-image: url(./components/svgBG.svg); */
 }
 
 .header {
@@ -65,7 +66,7 @@
   .waveButton:active {
     top: 2px;
   }
-  footer{
+  /* footer{
     color: #140202;
     display: flex;
     padding: 0.1rem;
@@ -76,7 +77,7 @@
     background: #f5f0f0;
     box-shadow:  20px 20px 60px #d0cccc,
               -20px -20px 60px #ffffff;
-  }
+  } */
 
   /* Spinner starts here */
 .loader{
@@ -349,4 +350,14 @@ svg :global(*) {
     stroke-width: 0.5;
     stroke-dashoffset: -150;
   }
+}
+/* Web3 text effect */
+.text-glow {
+  text-shadow: 0 0 80px rgb(192 219 255 / 75%), 0 0 32px rgb(65 120 255 / 24%);
+}
+.text-gradient {
+  background: linear-gradient(to right, #30CFD0, #c43ad6);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
